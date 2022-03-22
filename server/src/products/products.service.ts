@@ -18,12 +18,15 @@ export class ProductsService {
     }
 
     findOne(id: number) {
-        return this.productsRepository.findOne({
+        return this.productsRepository.findOne(id,{
             relations: ['customer', 'productType']
         })
     }
 
-    update(id: number, updateProductDto: UpdateProductDto) {
-        return this.productsRepository.update(id, updateProductDto);
+    async update(id: number, updateProductDto: UpdateProductDto) {
+        await this.productsRepository.update(id, updateProductDto);
+        return this.productsRepository.findOne(id,{
+            relations: ['customer', 'productType']
+        })
     }
 }
