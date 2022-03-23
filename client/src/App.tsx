@@ -7,15 +7,17 @@ import {
     BrowserRouter,
     Routes,
     Route,
-    Link
+    Navigate
 } from "react-router-dom";
 
 function App() {
     return (
         <BrowserRouter>
             <Routes>
+                <Route path="/" element={<Navigate replace to="/products"/>} />
                 <Route path="/products" element={<Products />} />
                 <Route path="/products/:id" element={<SingleProduct />} />
+
             </Routes>
         </BrowserRouter>
     );
