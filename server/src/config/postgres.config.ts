@@ -1,5 +1,4 @@
-import { TypeOrmModuleOptions } from '@nestjs/typeorm';
-
+import { join } from 'path';
 const pgConfig = {
     type: 'postgres',
     host: 'localhost',
@@ -8,7 +7,7 @@ const pgConfig = {
     password: '',
     database: 'coding_test_db',
     // entities: ['src/**/entities/*.entity{.ts,.js}'],  for initial db seeding
-    entities: ['dist/**/entities/*.entity{.ts,.js}'],
+    entities: [join(__dirname, '../**/*.entity.{ts,js}')],
     migrations: ['dist/db/migrations/*{.ts,.js}'],
     seeds: ['src/db/seeding/seeds/*{.ts,.js}'],
     factories: ['src/db/seeding/factories/*{.ts,.js}'],
